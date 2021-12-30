@@ -1,16 +1,142 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Use the title from a page's frontmatter if it has one -->
-    <title><%= current_page.data.title || "Middleman" %></title>
-    <%= stylesheet_link_tag "site" %>
-    <%= javascript_include_tag "site" %>
-  </head>
-  <body>
-    <%= yield %>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Use the title from a page's frontmatter if it has one -->
+  <title><%= current_page.data.title || "Middleman" %></title>
+  <!-- CSS only -->
+  <%# <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> %>
+  <%# <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"> %>
+  <%# <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous"> %>
+  <%# <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/base-min.css"> %>
+  <%# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"
+    integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" /> %>
+  <%# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" integrity="sha512-sVSECYdnRMezwuq5uAjKQJEcu2wybeAPjU4VJQ9pCRcCY4pIpIw4YMHIOQ0CypfwHRvdSPbH++dA3O4Hihm/LQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> %>
+  <!-- JavaScript Bundle with Popper -->
+  <%# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"
+    integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <%= stylesheet_link_tag "site" %>
+  <%= stylesheet_link_tag "highlights" %>
+  <%= javascript_include_tag "site" %>
+</head>
+
+<body class="d-flex flex-column">
+  <nav class="navbar navbar-expand-xxl navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Itamae wiki (WIP)</a>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid h-100">
+    <div class="row h-100 d-flex">
+      <div class="col-2 border-end">
+        <div class="flex-shrink-0 p-3 bg-white">
+          <ul class="list-unstyled ps-0">
+
+            <li class="mb-1">
+              <a href="/getting-started" class="btn btn-toggle-noarrow align-items-center rounded collapsed">
+                Getting Started
+              </a>
+            </li>
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                data-bs-target="#home-collapse" aria-expanded="true">
+                Resources
+              </button>
+              <div class="collapse show" id="home-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="/resources" class="link-dark rounded">Overview</a></li>
+                  <li><a href="/directory-resource" class="link-dark rounded">directory resource</a></li>
+                  <li><a href="/execute-resource" class="link-dark rounded">execute resource</a></li>
+                  <li><a href="/file-resource" class="link-dark rounded">file resource</a></li>
+                  <li><a href="/gem_package-resource" class="link-dark rounded">gem_package resource</a></li>
+                  <li><a href="/git-resource" class="link-dark rounded">git resource</a></li>
+                  <li><a href="/group-resource" class="link-dark rounded">group resource</a></li>
+                  <li><a href="/http_request-resource" class="link-dark rounded">http_request resource</a></li>
+                  <li><a href="/link-resource" class="link-dark rounded">link resource</a></li>
+                  <li><a href="/local_ruby_block-resource" class="link-dark rounded">local_ruby_block resource</a></li>
+                  <li><a href="/package-resource" class="link-dark rounded">package resource</a></li>
+                  <li><a href="/remote_directory-resource" class="link-dark rounded">remote_directory resource</a></li>
+                  <li><a href="/remote_file-resource" class="link-dark rounded">remote_file resource</a></li>
+                  <li><a href="/service-resource" class="link-dark rounded">service resource</a></li>
+                  <li><a href="/template-resource" class="link-dark rounded">template resource</a></li>
+                  <li><a href="/user-resource" class="link-dark rounded">user resource</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="mb-1">
+              <a href="/definitions" class="btn btn-toggle-noarrow align-items-center rounded collapsed">
+                Definitions
+              </a>
+            </li>
+            <li class="mb-1">
+              <a href="/including-recipes" class="btn btn-toggle-noarrow align-items-center rounded collapsed">
+                Including Recipes
+              </a>
+            </li>
+            <li class="mb-1">
+              <a href="/node-attributes" class="btn btn-toggle-noarrow align-items-center rounded collapsed">
+                Node Attributes
+              </a>
+            </li>
+            <li class="mb-1">
+              <a href="/run_command" class="btn btn-toggle-noarrow align-items-center rounded collapsed">
+                run_command
+              </a>
+            </li>
+            <li class="mb-1">
+              <a href="https://serverspec.org/host_inventory.html" class="btn btn-toggle-noarrow align-items-center rounded collapsed">
+                Host Inventory
+              </a>
+            </li>
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                data-bs-target="#dashboard-collapse" aria-expanded="false">
+                Plugins
+              </button>
+              <div class="collapse" id="dashboard-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="/recipe-plugins" class="link-dark rounded">Recipe Plugins</a></li>
+                  <li><a href="/resource-plugins" class="link-dark rounded">Resource Plugins</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="mb-1">
+              <a href="/best-practice" class="btn btn-toggle-noarrow align-items-center rounded collapsed">
+                Best Practice
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col p-5">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  <%# <main>
+  </main> %>
+
+  <%# <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-core.min.js" integrity="sha512-TbHaMJHEmRBDf9W3P7VcRGwEmVEJu7MO6roAE0C4yqoNHeIVo3otIX3zj1DOLtn7YCD+U8Oy1T9eMtG/M9lxRw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> %>
+  <%# <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-sv0slik/5O0JIPdLBCR2A3XDg/1U3WuDEheZfI/DI5n8Yqc3h5kjrnr46FGBNiUAJF7rE4LHKwQ/SoSLRKAxEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"
+    integrity="sha512-pax4MlgXjHEPfCwcJLQhigY7+N8rt6bVvWLFyUMuxShv170X53TRzGPmPkZmGBhk+jikR8WBM4yl7A9WMHHqvg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
 </html>
